@@ -12,6 +12,7 @@ package mundo;
 
 import anotaciones.Cargar;
 import anotaciones.Driver;
+import anotaciones.Logg;
 import anotaciones.NoInit;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class ManejadorMuebles {
      * Devuelve la lista de muebles de MLA
      * @return
      */
+     @Logg
     public ArrayList<Mueble> getMuebles() {
         return muebles;
     }
@@ -47,6 +49,7 @@ public class ManejadorMuebles {
      * Crea un nuevo mueble, lo añade a la lista y lo retorna
      * @return
      */
+    @Logg
     public Mueble nuevoMueble() {
         Mueble nuevo = (Mueble)Driver.instanciar(Mueble.class);       
         for (Field f : Mueble.class.getDeclaredFields()) {       
@@ -62,6 +65,7 @@ public class ManejadorMuebles {
      * @param id Id del mueble a buscar
      * @return
      */
+     @Logg
     public Mueble findMueble(int id) {
         for(int e = 0;e<muebles.size();e++){
             if(muebles.get(e).getId()==id){
@@ -75,6 +79,7 @@ public class ManejadorMuebles {
      * Elimina un mueble dado su identificador
      * @param id Id del mueble
      */
+     @Logg
     public void eliminarMueble(int id) {
         for(int e = 0;e<muebles.size();e++){
             if(muebles.get(e).getId()==id){
