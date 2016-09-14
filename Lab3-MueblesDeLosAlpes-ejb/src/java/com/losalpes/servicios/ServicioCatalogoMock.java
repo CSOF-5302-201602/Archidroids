@@ -30,6 +30,7 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote, IServi
      /**
      * Interface con referencia al servicio de persistencia en el sistema
      */
+    @EJB
     private IServicioPersistenciaMockLocal persistencia;
 
     /**

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : catalogo
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/main-template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="titulo" value="Reporte de compras del Ultimo mes" />
+    <ui:define name="body">
+        
+        <h:form>
+                <div align="right" style="padding-right: 10px">
+                    <h:commandButton style="background: transparent" image="./resources/img/pag/atras.png" action="menu.xhtml"/>
+                </div>
+        </h:form>
+   
+            
+       <h:form>
+                <!-- Se crea una tabla donde se presentan los muebles del sistema -->
+                <p:dataTable
+                    id="data"
+                    value="#{reporteBean.reportes}"
+                    var="file"
+                    scrollable="false"
+                    scrollHeight="100px"
+                    paginator="true"
+                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    resizableColumns="true"
+                    rows="5">
+
+                           
+                    <p:column headerText="Fecha" sortBy="#{file.fechaVenta}">
+                        <h:outputText value="#{file.fechaVenta}" />
+                    </p:column>
+                    
+                    <p:column headerText="Ciudad">
+                        <h:outputText value="#{file.ciudad}" />
+                    </p:column>
+                    
+                    <p:column headerText="Producto">
+                        <h:outputText value="#{file.producto.nombre}" />
+                    </p:column>
+                    
+                    <p:column headerText="Tipo">
+                        <h:outputText value="#{file.tipo}" />
+                    </p:column>
+                    
+                    <p:column headerText="Cantidad">
+                        <h:outputText value="#{file.cantidad}" />
+                    </p:column>
+                    
+                    <p:column headerText="Comprador">
+                        <h:outputText value="#{file.comprador.nombreCompleto}" />
+                    </p:column>
+                    
+                   
+                </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>

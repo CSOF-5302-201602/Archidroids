@@ -24,13 +24,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import javax.ejb.Singleton;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
 /**
  * Implementación de los servicios de persistencia
  * 
  */
-@Stateless
+@Singleton
 public class ServicioPersistenciaMock implements IServicioPersistenciaMockRemote, IServicioPersistenciaMockLocal {
 
     //-----------------------------------------------------------
@@ -349,6 +351,17 @@ public class ServicioPersistenciaMock implements IServicioPersistenciaMockRemote
             {
                 Usuario mue = (Usuario) v;
                 if (mue.getLogin().equals(id))
+                {
+                    return mue;
+                }
+            }
+        }
+        else if (c.equals(RegistroVenta.class))
+        {
+            for (Object v : findAll(c))
+            {
+                RegistroVenta mue = (RegistroVenta) v;
+                if (mue.getFechaVenta().equals(id))
                 {
                     return mue;
                 }
