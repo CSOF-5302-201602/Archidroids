@@ -30,6 +30,7 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote, IServi
      /**
      * Interface con referencia al servicio de persistencia en el sistema
      */
+    @EJB
     private IServicioPersistenciaMockLocal persistencia;
 
     /**
@@ -48,7 +49,6 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote, IServi
     public ServicioCatalogoMock()
     {
         arrMuebles = new ArrayList<Mueble>();
-        persistencia=new ServicioPersistenciaMock();
     }
 
     //-----------------------------------------------------------
@@ -64,15 +64,8 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote, IServi
      public void agregarMueble(Mueble m)throws OperacionInvalidaException
     {
         try
-        {
-            if(m.getReferencia()!=0)
-            {
-            persistencia.create(m);
-            }
-            else
-            {
-                throw new OperacionInvalidaException("El número de documento no es válido");
-            }
+        {            
+            persistencia.create(m);           
         }
         catch (OperacionInvalidaException ex)
         {
