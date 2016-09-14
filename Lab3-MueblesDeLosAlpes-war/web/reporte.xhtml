@@ -32,8 +32,8 @@
                 resizableColumns="true"
                 rows="5">
                 <f:facet name="Exportar">
-                    <h:commandLink>
-                        <p:graphicImage name="./resources/img/pag/bed_small.png" width="24"/>
+                    <h:commandLink value="Exportar">
+                       
                         <p:dataExporter type="pdf" target="data" fileName="reportes"/>
                     </h:commandLink>
                 </f:facet>
@@ -57,13 +57,6 @@
                         <h:outputText value="Descripcion" />
                     </f:facet>
                     <h:outputText value="#{file.producto.descripcion}" />
-                </p:column>
-
-                <p:column >
-                    <f:facet name="header">
-                        <h:outputText value="Cantidad" />
-                    </f:facet>
-                    <h:outputText value="#{file.producto.cantidad}" />
                 </p:column>
 
                 <p:column >
