@@ -30,7 +30,7 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote, IServi
      /**
      * Interface con referencia al servicio de persistencia en el sistema
      */
-    @EJB
+    
     private IServicioPersistenciaMockLocal persistencia;
 
     /**
@@ -49,7 +49,7 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote, IServi
     public ServicioCatalogoMock()
     {
         arrMuebles = new ArrayList<Mueble>();
-        persistencia=new ServicioPersistenciaMock();
+        persistencia=ServicioPersistenciaMock.getInstance();
     }
 
     //-----------------------------------------------------------

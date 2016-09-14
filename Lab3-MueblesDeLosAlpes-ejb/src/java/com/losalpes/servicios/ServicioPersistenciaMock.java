@@ -24,7 +24,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
@@ -32,7 +34,7 @@ import javax.ejb.Stateless;
  * Implementación de los servicios de persistencia
  * 
  */
-@Singleton
+
 public class ServicioPersistenciaMock implements IServicioPersistenciaMockRemote, IServicioPersistenciaMockLocal {
 
     //-----------------------------------------------------------
@@ -59,14 +61,27 @@ public class ServicioPersistenciaMock implements IServicioPersistenciaMockRemote
      */
     private static ArrayList<RegistroVenta> registrosVentas;
 
+    
+    private static ServicioPersistenciaMock instance;
     //-----------------------------------------------------------
     // Constructor
     //-----------------------------------------------------------
 
+    
+    
+    public static ServicioPersistenciaMock getInstance(){
+        if(instance==null)
+            instance=new ServicioPersistenciaMock();
+        return instance;
+    }
+    
+    
+    
     /**
      * Constructor de la clase. Inicializa los atributos.
      */
-    public ServicioPersistenciaMock()
+    
+    private ServicioPersistenciaMock()
     {
         if (vendedores == null)
         {

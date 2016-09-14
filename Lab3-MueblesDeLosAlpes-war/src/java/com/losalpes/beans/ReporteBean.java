@@ -33,7 +33,8 @@ public class ReporteBean implements Serializable {
      */
     public ArrayList<RegistroVenta> getReportes() {
 
-        return reporte.getReporte(new Date());
+        ArrayList<RegistroVenta> reportes= reporte.getReporte(new Date());
+         return reportes;
     }
     
     

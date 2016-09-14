@@ -33,7 +33,7 @@ public class ServicioRegistroMock implements IServicioRegistroMockRemote, IServi
     /**
      * Interface con referencia al servicio de persistencia en el sistema
      */
-    @EJB
+    
     private IServicioPersistenciaMockLocal persistencia;
 
     //-----------------------------------------------------------
@@ -45,7 +45,7 @@ public class ServicioRegistroMock implements IServicioRegistroMockRemote, IServi
      */
      public ServicioRegistroMock()
      {
-        persistencia=new ServicioPersistenciaMock();
+        persistencia=ServicioPersistenciaMock.getInstance();
      }
 
     //-----------------------------------------------------------

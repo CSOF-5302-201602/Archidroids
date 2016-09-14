@@ -14,18 +14,16 @@ import java.util.Date;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.ejb.Stateful;
 
-/**
- *
- * @author fa.hoyos
- */
+
 @Stateless
 public class ServicioReporteMockLocal implements IServicioReporteMockLocal,IServicioReporteMockRemote{
 
      /**
      * Interface con referencia al servicio de persistencia en el sistema
      */
-    @EJB
+   
     private IServicioPersistenciaMockLocal persistencia;
     
     
@@ -35,7 +33,7 @@ public class ServicioReporteMockLocal implements IServicioReporteMockLocal,IServ
     private ArrayList<RegistroVenta> registroVenta;
 
     public ServicioReporteMockLocal() {
-        this.persistencia = new ServicioPersistenciaMock();
+        persistencia=ServicioPersistenciaMock.getInstance();
         this.registroVenta = new ArrayList<RegistroVenta>();
     }
     
@@ -51,10 +49,12 @@ public class ServicioReporteMockLocal implements IServicioReporteMockLocal,IServ
         int month = cal.get(Calendar.MONTH);
         
       ArrayList<RegistroVenta> registros=(ArrayList<RegistroVenta>) persistencia.findAll(RegistroVenta.class);
+      System.out.println("size "+registros.size());
         for (int i = 0; i < registros.size(); i++) {
             cal.setTime(registros.get(i).getFechaVenta());
            if(month==cal.get(Calendar.MONTH)){
-           } registroVenta.add(registros.get(i));
+            registroVenta.add(registros.get(i));
+            }
         }
         return registroVenta;
     }
