@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : catalogo
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/main-template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="titulo" value="Reporte de compras del Ultimo mes" />
+    <ui:define name="body">
+
+        <h:form>
+            <div align="right" style="padding-right: 10px">
+                <h:commandButton style="background: transparent" image="./resources/img/pag/atras.png" action="menu.xhtml"/>
+            </div>
+        </h:form>
+
+
+        <h:form>
+            <!-- Se crea una tabla donde se presentan los muebles del sistema -->
+            <p:dataTable
+                id="data"
+                value="#{reporteBean.reportes}"
+                var="file"
+                scrollable="false"
+                scrollHeight="100px"
+                paginator="true"
+                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                resizableColumns="true"
+                rows="5">
+                <f:facet name="Exportar">
+                    <h:commandLink value="Exportar">
+                       
+                        <p:dataExporter type="pdf" target="data" fileName="reportes"/>
+                    </h:commandLink>
+                </f:facet>
+
+                <p:column  sortBy="#{file.fechaVenta}">
+                    <f:facet name="header">
+                        <h:outputText value="Fecha" />
+                    </f:facet>
+                    <h:outputText value="#{file.fechaVenta}" />
+                </p:column>
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Producto" />
+                    </f:facet>
+                    <h:outputText value="#{file.producto.nombre}" />
+                </p:column>
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Descripcion" />
+                    </f:facet>
+                    <h:outputText value="#{file.producto.descripcion}" />
+                </p:column>
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Precio Unitario" />
+                    </f:facet>
+                    <h:outputText value="#{file.producto.precio}" />
+                </p:column>
+
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputText value="Comprador" />
+                    </f:facet>
+                    <h:outputText value="#{file.comprador.login}" />
+                </p:column>
+
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>

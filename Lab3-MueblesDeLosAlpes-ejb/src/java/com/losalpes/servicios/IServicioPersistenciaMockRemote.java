@@ -19,7 +19,7 @@ import javax.ejb.Remote;
  * Contrato funcional de los servicios de persistencia de manera remota.
  * 
  */
-@Remote
+
 public interface IServicioPersistenciaMockRemote
 {
 
