@@ -12,10 +12,13 @@
 
 package com.losalpes.entities;
 
+import javax.persistence.Entity;
+
 /**
  * Clase que representa una ciudad en el sistema
  * 
  */
+@Entity
 public class Ciudad
 {
       
@@ -26,6 +29,7 @@ public class Ciudad
     /**
      * Nombre de la ciudad
      */
+    @Id
     private String nombre;
 
     /**

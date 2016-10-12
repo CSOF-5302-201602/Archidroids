@@ -12,13 +12,17 @@
 
 package com.losalpes.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Clase que representa un usuario del sistema
  * 
  */
-public class Usuario
+@Entity
+public class Usuario implements Serializable
 {
 
     //-----------------------------------------------------------
@@ -28,6 +32,7 @@ public class Usuario
     /**
      * Nombre del usuario
      */
+    @Id
     private String login;
 
     /**

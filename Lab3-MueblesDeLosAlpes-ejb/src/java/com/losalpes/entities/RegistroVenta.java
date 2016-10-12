@@ -12,13 +12,17 @@
 
 package com.losalpes.entities;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Clase que modela un registro de venta realizado por un cliente
  * 
  */
-public class RegistroVenta
+@Entity
+public class RegistroVenta implements Serializable
 {
 
     //-----------------------------------------------------------
@@ -28,6 +32,7 @@ public class RegistroVenta
     /**
      * Fecha en la que se vendió el producto
      */
+    @Id
     private Date fechaVenta;
 
     /**

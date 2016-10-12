@@ -12,11 +12,14 @@
 package com.losalpes.entities;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Clase que representa un país en el sistema
  * 
  */
+@Entity
 public class Pais
 {
 
@@ -27,6 +30,7 @@ public class Pais
     /**
      * Nombre del país
      */
+    @Id
     private String nombre;
     /**
      * Ciudades que tiene el país

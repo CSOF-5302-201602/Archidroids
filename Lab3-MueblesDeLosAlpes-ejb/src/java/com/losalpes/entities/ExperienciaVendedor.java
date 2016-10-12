@@ -12,11 +12,16 @@
 
 package com.losalpes.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Clase que modela un ìtem de experiencia de vendedor.
  * 
  */
-public class ExperienciaVendedor
+@Entity
+public class ExperienciaVendedor implements Serializable
 {
 
     //-----------------------------------------------------------
@@ -26,6 +31,7 @@ public class ExperienciaVendedor
     /**
      * Identificador del item de experiencia.
      */
+    @Id
     private long id;
 
     /**

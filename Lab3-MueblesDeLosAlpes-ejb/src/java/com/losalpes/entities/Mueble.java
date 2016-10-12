@@ -12,10 +12,14 @@
 
 package com.losalpes.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Clase que representa la información de un mueble en el sistema
  * 
  */
+@Entity
 public class Mueble
 {
 
@@ -26,6 +30,7 @@ public class Mueble
     /**
      * Referencia que identifica el modelo del mueble en el sistema.
      */
+    @Id
     private long referencia;
 
     /**

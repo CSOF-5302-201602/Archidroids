@@ -11,14 +11,18 @@
  */
 package com.losalpes.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Clase que modela un vendedor dentro del sistema.
  * 
  */
-public class Vendedor
+@Entity
+public class Vendedor implements Serializable
 {
 
     //-----------------------------------------------------------
@@ -28,6 +32,7 @@ public class Vendedor
     /**
      * Número de identificación del vendedor
      */
+    @Id
     private long id;
 
     /**
