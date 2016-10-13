@@ -12,14 +12,19 @@
 
 package com.losalpes.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.TableGenerator;
 
 /**
  * Clase que representa una ciudad en el sistema
  * 
  */
 @Entity
-public class Ciudad
+public class Ciudad implements Serializable
 {
       
     //-----------------------------------------------------------
@@ -29,7 +34,9 @@ public class Ciudad
     /**
      * Nombre de la ciudad
      */
+    @TableGenerator(name = "VEHICLE_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", allocationSize = 1)
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "VEHICLE_GEN")
     private String nombre;
 
     /**
